@@ -62,7 +62,7 @@
         <br>
         <%= waiting_delivery.details %><br>
         <form action="/modify_delivery/<%= waiting_delivery.id %>" method="post">
-          <input type="hidden" name="arrived" value="true">
+          <input type="hidden" name="arrived">
           <button>Mark as received</button>
         </form>
       </li>

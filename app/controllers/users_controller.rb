@@ -19,10 +19,32 @@ class UsersController < ApplicationController
 
     if the_delivery.valid?
       the_delivery.save
-      redirect_to("/", { :notice => "Delivery created successfully." })
+      redirect_to("/", { :notice => "Added to list." })
+    else
+      redirect_to("/", { :alert => the_delivery.errors.full_messages.to_sentence })
+    end
+  end
+
+  def update
+    the_id = params.fetch("path_id")
+    the_delivery = Delivery.where({ :id => the_id }).at(0)
+
+    the_delivery.arrived = params.fetch("query_arrived", true)
+
+    if the_delivery.valid?
+      the_delivery.save
+      redirect_to("/", { :notice => "Delivery updated successfully."} )
     else
       redirect_to("/", { :alert => the_delivery.errors.full_messages.to_sentence })
     end
   end
   
+  def destroy
+    the_id = params.fetch("path_id")
+    the_delivery = Delivery.where({ :id => the_id }).at(0)
+
+    the_delivery.destroy
+
+    redirect_to("/", { :notice => "Delivery deleted successfully."} )
+  end
 end
