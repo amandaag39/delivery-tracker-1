@@ -36,7 +36,7 @@
         User
       </label>
 
-      <input type="text" id="user_id_box" name="query_user_id">
+      <input type="hidden" id="user_id_box" name="query_user_id" value="<%= current_user.id %>">
     </div>
 
     <button>
@@ -47,7 +47,7 @@
 
 <hr>
 
-<div class="waiting_on" style="background-color: lightgoldenrodyellow">
+<div class="waiting_on">
   <h2>Waiting on</h2>
   <ul>
     <% @list_of_waiting_deliveries.each do |waiting_delivery| %>
